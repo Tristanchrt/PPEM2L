@@ -5,13 +5,7 @@
     <?php for ($i = 0; $i < count($salle); $i++) { ?>
 
         <div class="salle">
-
-        	<span class="salleName"> <?= $salle[$i]->nomSalle; ?></span><br /><br />
-          <span> Poste dans la salle :</span>
-            <?php for ($ii = 0; $ii < count($postSalle[$i]); $ii++) { ?>
-                    <?= $postSalle[$i][$ii]->nomPoste  ?>
-            <?php   } ?>
-
+        	<span class="salleName"> <a href="./?action=detail&nSalle=<?= $salle[$i]->nSalle; ?>" > <?= $salle[$i]->nomSalle; ?> </a> </span><br /><br />
     	  </div>
     <?php } ?>
 </div>

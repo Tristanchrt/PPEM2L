@@ -2,7 +2,7 @@
 
   function connexionPDO() {
       $login = "root";
-      $mdp = "root";
+      $mdp = "";
       $bd = "bdtest";
       $serveur = "localhost";
 
@@ -17,7 +17,7 @@
   }
   function connexionPDOMRBS() {
       $login = "root";
-      $mdp = "root";
+      $mdp = "";
       $bd = "mrbss";
       $serveur = "localhost";
 

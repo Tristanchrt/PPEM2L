@@ -28,8 +28,6 @@
 
     $postSelected = getPostWithId(htmlentities($_POST['postsValForChangeData']));
 
-    var_dump($postSelected);
-
     $titre = "Modifier poste";
     include "$racine/vue/entete.html.php";
     include "$racine/vue/vueModifierSalle.php";

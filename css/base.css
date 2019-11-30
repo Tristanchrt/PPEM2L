@@ -110,12 +110,12 @@ nav {
 }
 
 #menuGeneral {
-    text-align : center;
-    width : calc(var(--largeurPage) + 220px + var(--padding_cote) + 2px);
-    height : var(--hauteurMenuGene);
-    background-color : rgba(45,45,45,0.9);
-    color : #fff;
-    margin:auto auto;
+    text-align: center;
+    width: calc(var(--largeurPage) + 500px + var(--padding_cote) + 2px);
+    height: var(--hauteurMenuGene);
+    background-color: rgba(0,0,45,0.9);
+    color:#fff;
+    margin: auto auto;
     box-shadow: 0px 0px 6px #999;
     border-radius: 3px;
 }

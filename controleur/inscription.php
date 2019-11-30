@@ -8,21 +8,20 @@
 
   $inscrit = false;
   $msg="";
-  // recuperation des donnees GET, POST, et SESSION
+
   if (isset($_POST["mailU"]) && isset($_POST["mdpU"]) && isset($_POST["pseudoU"])) {
 
       if ($_POST["mailU"] != "" && $_POST["mdpU"] != "" && $_POST["pseudoU"] != "") {
-          $mailU = $_POST["mailU"];
-          $mdpU = $_POST["mdpU"];
-          $pseudoU = $_POST["pseudoU"];
+          $mailU   = htmlentities($_POST["mailU"]);
+          $mdpU    = htmlentities($_POST["mdpU"]);
+          $pseudoU = htmlentities($_POST["pseudoU"]);
 
-          // enregistrement des donnees
           $ret = addUtilisateur($mailU, $mdpU, $pseudoU);
-          if ($ret) {
+          if ($ret)
               $inscrit = true;
-          } else {
+          else
               $msg = "l'utilisateur n'a pas été enregistré.";
-          }
+
       }
    else {
       $msg="Renseigner tous les champs...";

@@ -20,8 +20,8 @@
     <nav>
         <ul id="menuGeneral">
             <?php /* test */ if(isLoggedOn()){ ?>
-            <li class="col-lg-2"><a href="./?action=profil">Mon Profil</a></li>
             <li class="col-lg-2"><a href="./?action=accueil">Accueil</a></li>
+            <li class="col-lg-2"><a href="./?action=profil">Mon Profil</a></li>
           <?php }
           if(isset($_SESSION["name"])){
               $user  = getUtilisateurByName($_SESSION["name"]);
@@ -33,7 +33,6 @@
               <li class="col-lg-1"><a href="./?action=modifierSalle">Modifier Salle</a></li>
             <?php }
           }?>
-
         </ul>
     </nav>
     <div id="corps">

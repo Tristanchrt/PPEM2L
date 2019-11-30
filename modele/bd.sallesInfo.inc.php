@@ -95,7 +95,6 @@
             $totPost = getIdPost();
             $totPost = "p".intval($totPost['COUNT(nPoste)']+1);
 
-
             $req = $cnx->prepare("insert into poste (nPoste, nomPoste, indIP, ad, typePoste , nSalle)
                 values(:totPost,:namePost,:ipSalle,:idUser,:typePost,:salleVal)");
 
@@ -106,9 +105,8 @@
             $req->bindValue(':typePost', $typePost, PDO::PARAM_STR);
             $req->bindValue(':salleVal', $salleVal, PDO::PARAM_STR);
 
-            var_dump($req);
             $resultat = $req->execute();
-            var_dump($resultat);
+
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();
             die();

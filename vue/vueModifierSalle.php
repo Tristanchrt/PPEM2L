@@ -13,9 +13,7 @@
 		<?php } ?>
 
 			<form id="changeDataForm" ref="formChangeData" action="./?action=modifierSalle" method="POST">
-
 				<input id="postesSelect" type="text" name="postsValForChangeData" style="display: none;"/>
-
 			</form>
 
 		<form action="./?action=modifierSalle" method="POST">
@@ -31,8 +29,9 @@
 		        		 <?php
 		        	} ?>
 			</select> <br><br>
+			
 			<label>Modifier le nom du poste :</label>
-		    <input type="text" name="namePostChange" size="25" value="<?= $namePoste = (!empty($postSelected)) ? $namePoste = "$postSelected->nomPoste" : $namePoste = "";?>"><br><br>
+		    <input type="text" name="namePostChange" size="25" value="<?= (!empty($postSelected)) ? "$postSelected->nomPoste" : "";?>"><br><br>
 
 			<label>Selectionner la salle a changer</label>
 			<select id="salle" name="changeSalleVal">

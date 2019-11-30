@@ -177,6 +177,20 @@
       return $resultat;
 
     }
+    function getPostWithId($nPoste) {
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT * FROM poste WHERE nPoste =:nPoste");
+            $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
+            $req->execute();
+            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
 
 
 

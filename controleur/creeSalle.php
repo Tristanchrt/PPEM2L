@@ -11,7 +11,7 @@
 
   $checkCreatePoste = false;
 
-  $titre = "Cree une salle";
+  $titre = "Cree un poste";
   include "$racine/vue/entete.html.php";
 
 

@@ -1,54 +1,92 @@
 
 
-<h1>
-	<?= $titre ?>
-</h1>
+	<h1>
+		<?= $titre ?>
+	</h1>
 
-<div class="modifierSalle">
+	<div id="vueModifierSalle" class="modifierSalle">
 
-	<?php if($requestUpdate){ ?>
-		<div class="alert alert-success">
-  		<strong>Modification effectuer !</strong>
-		</div>
-	<?php } ?>
+		<?php if($requestUpdate){ ?>
+			<div class="alert alert-success">
+	  		<strong>Modification effectuer !</strong>
+			</div>
+		<?php } ?>
 
-	<form action="./?action=modifierSalle" method="POST">
+			<form ref="formChangeData" action="./?action=modifierSalle" method="POST">
+				<input id="postesSelect" type="text" name="postsValForChangeData" v-model="posteSelect"/>
+			</form>
 
-	    <label>Selectionner un poste:</label>
-		<select id="posts" name="postsVal">
-		      		<?php
-		        	foreach($posts as $unePosts => $post) {
-		        		 ?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
-		        		 <?php
-		        	} ?>
-		</select> <br><br>
+		<form action="./?action=modifierSalle" method="POST">
 
-		<label>Modifier le nom du poste :</label>
-	    <input type="text" name="namePostChange" size="25"><br><br>
+		    <label>Selectionner un poste:</label>
+			<select id="allPosts" v-model="allPostsS" @change="sendValPoste()" name="postsVal">
+			      		<?php
+			        	foreach($posts as $unePosts => $post) {
+			        		 ?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+			        		 <?php
+			        	} ?>
+			</select> <br><br>
 
-		<label>Selectionner la salle a changer</label>
-		<select id="salle" name="changeSalleVal">
-		      		<?php
-		        	foreach($salles as $uneSalle => $salle) {
-		        		 ?> <option value="<?= $salle->nSalle?>"> <?=$salle->nomSalle?> </option>;
-		        		 <?php
-		        	} ?>
-		</select><br><br>
+			<label>Modifier le nom du poste :</label>
+		    <input type="text" name="namePostChange" size="25"><br><br>
+
+			<label>Selectionner la salle a changer</label>
+			<select id="salle" name="changeSalleVal">
+			      		<?php
+			        	foreach($salles as $uneSalle => $salle) {
+			        		 ?> <option value="<?= $salle->nSalle?>"> <?=$salle->nomSalle?> </option>;
+			        		 <?php
+			        	} ?>
+			</select><br><br>
 
 
-		<label>Modifier le type du poste :</label>
-		<select id="typePc" name="typePost">
-				<?php
-				foreach($typePc as $untypePc => $typePcVal) {
-					 ?> <option value="<?= $typePcVal->typeLP?>"> <?=$typePcVal->nomType?> </option>;
-					 <?php
-				} ?>
-		</select>
+			<label>Modifier le type du poste :</label>
+			<select id="typePc" name="typePost">
+					<?php
+					foreach($typePc as $untypePc => $typePcVal) {
+						 ?> <option value="<?= $typePcVal->typeLP?>"> <?=$typePcVal->nomType?> </option>;
+						 <?php
+					} ?>
+			</select>
 
-		<br />
+			<br />
 
-		  <input type="submit" name="buttonChangePoste">
+			  <input type="submit" name="buttonChangePoste">
 
-	</form>
+		</form>
+			<form action="./?action=modifierSalle&nPoste=" method="GET">
+	 			<input type="submit" name="buttonChangePostegfgf" value="testss" @click="sendModifierSalle()">
+			</form>
+	</div>
 
-</div>
+		<script>
+
+		var vueModifierSalle = new Vue({
+		  el: '#vueModifierSalle',
+		  data: {
+		    allPostsS: '',
+				posteSelect: '',
+				posteSelects: ''
+		  },
+		  methods: {
+		     sendModifierSalle: function () {
+		       $.ajax({
+		         url: '?action=modifierSalle&nPoste=',
+		         type: 'POST',
+		         data: {nPosteVal: this.allPostsS}
+		       })
+		       .done(function() {
+		       })
+		    },
+		    sendValPoste(){
+		      console.log(this.allPostsS);
+					this.posteSelect = this.allPostsS;
+					console.log(this.posteSelect);
+					this.$refs.formChangeData.submit()
+		    }
+		  }
+		})
+
+
+
+		</script>

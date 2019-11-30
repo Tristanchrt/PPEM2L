@@ -1,6 +1,7 @@
 <?php
 
 function controleurPrincipal($action) {
+
     $lesActions = array();
     $lesActions["defaut"] = "accueil.php";
     $lesActions["connexion"] = "connexion.php";
@@ -11,8 +12,9 @@ function controleurPrincipal($action) {
     $lesActions["modifierSalle"] = "modifierSalle.php";
 
     if (array_key_exists($action, $lesActions)) {
-        $action = (isset($_GET["action"])) ? $_GET["action"] : $action = (!isset($_SESSION)) ? "connexion" : "defaut";
-        return $lesActions[$action];
+      $action = (isset($_GET["action"])) ? $_GET["action"] : $action = (!isset($_SESSION["name"])) ? "connexion" : "defaut";
+      // $action = (isset($_SESSION["name"])) ? "connexion" : $action = (isset($_GET["action"])) ? $_GET["action"] : "defaut";
+      return $lesActions[$action];
     }
     else {
         return $lesActions["defaut"];

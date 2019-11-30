@@ -12,7 +12,7 @@
 			</div>
 		<?php } ?>
 
-			<form ref="formChangeData" action="./?action=modifierSalle" method="POST">
+			<form id="changeDataForm" ref="formChangeData" action="./?action=modifierSalle" method="POST">
 				<input id="postesSelect" type="text" name="postsValForChangeData" style="display: none;"/>
 			</form>
 
@@ -65,7 +65,7 @@
 			var valPostes = $('#allPosts').val();
 			console.log(valPostes);
       $('#postesSelect').attr('value', valPostes);
-      // $('#sendData').submit();
+      $('#changeDataForm').submit();
     });
 
 		</script>

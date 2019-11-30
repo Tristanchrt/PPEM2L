@@ -13,13 +13,17 @@
 		<?php } ?>
 
 			<form id="changeDataForm" ref="formChangeData" action="./?action=modifierSalle" method="POST">
-				<input id="postesSelect" type="text" name="postsValForChangeData" v-model="posteSelect"/>
+
+				<input id="postesSelect" type="text" name="postsValForChangeData" style="display: none;"/>
+
 			</form>
 
 		<form action="./?action=modifierSalle" method="POST">
 
 		    <label>Selectionner un poste:</label>
-			<select id="allPosts" v-model="allPostsS" @change="sendValPoste()" name="postsVal">
+
+			<select id="allPosts" name="postsVal">
+
 			      		<?php
 			        	foreach($posts as $unePosts => $post) {
 			        		 ?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
@@ -55,11 +59,14 @@
 
 		</form>
 			<form action="./?action=modifierSalle&nPoste=" method="GET">
-	 			<input type="submit" name="buttonChangePostegfgf" value="testss" @click="sendModifierSalle()">
+
+	 			<input type="submit" name="buttonChangePostegfgf" value="testss">
+
 			</form>
 	</div>
 
 		<script>
+
 
 				$('#allPosts').change(function(e) {
 					var valPostes = $('#allPosts').val();
@@ -67,5 +74,6 @@
 		      $('#postesSelect').attr('value', valPostes);
 		      $('#changeDataForm').submit();
 		    });
+
 
 		</script>

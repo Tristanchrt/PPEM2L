@@ -24,6 +24,7 @@
 
   }
   if(isset($_POST['postsValForChangeData'])){
+
     $post = getPostWithId(htmlentities($_POST['postsValForChangeData']));
 
     var_dump($post);

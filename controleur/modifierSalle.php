@@ -23,8 +23,20 @@
     $requestUpdate = updatePosts($postsVal, $changeSalleVal, $namePostChange, $typePost, $checkNameChange);
 
   }
+  if(isset($_POST['nPosteVal'])){
 
-  $titre = "Modifier posts";
-  include "$racine/vue/entete.html.php";
-  include "$racine/vue/vueModifierSalle.php";
-  include "$racine/vue/pied.html.php";
+    $post = getPostWithId(htmlentities($_POST['nPosteVal']));
+
+    var_dump($post);
+
+    $titre = "Modifier poste";
+    include "$racine/vue/entete.html.php";
+    include "$racine/vue/vueModifierSalle.php";
+    include "$racine/vue/pied.html.php";
+
+  }else {
+    $titre = "Modifier poste";
+    include "$racine/vue/entete.html.php";
+    include "$racine/vue/vueModifierSalle.php";
+    include "$racine/vue/pied.html.php";
+  }

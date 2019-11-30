@@ -12,7 +12,7 @@
 			</div>
 		<?php } ?>
 
-			<form ref="formChangeData" action="./?action=modifierSalle" method="POST">
+			<form id="changeDataForm" ref="formChangeData" action="./?action=modifierSalle" method="POST">
 				<input id="postesSelect" type="text" name="postsValForChangeData" v-model="posteSelect"/>
 			</form>
 
@@ -61,32 +61,11 @@
 
 		<script>
 
-		var vueModifierSalle = new Vue({
-		  el: '#vueModifierSalle',
-		  data: {
-		    allPostsS: '',
-				posteSelect: '',
-				posteSelects: ''
-		  },
-		  methods: {
-		     sendModifierSalle: function () {
-		       $.ajax({
-		         url: '?action=modifierSalle&nPoste=',
-		         type: 'POST',
-		         data: {nPosteVal: this.allPostsS}
-		       })
-		       .done(function() {
-		       })
-		    },
-		    sendValPoste(){
-		      console.log(this.allPostsS);
-					this.posteSelect = this.allPostsS;
-					console.log(this.posteSelect);
-					this.$refs.formChangeData.submit()
-		    }
-		  }
-		})
-
-
+				$('#allPosts').change(function(e) {
+					var valPostes = $('#allPosts').val();
+					console.log(valPostes);
+		      $('#postesSelect').attr('value', valPostes);
+		      $('#changeDataForm').submit();
+		    });
 
 		</script>

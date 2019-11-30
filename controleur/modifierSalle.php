@@ -23,11 +23,11 @@
     $requestUpdate = updatePosts($postsVal, $changeSalleVal, $namePostChange, $typePost, $checkNameChange);
 
   }
-  if(isset($_POST['nPosteVal'])){
-    $post = getPostWithId(htmlentities($_POST['nPosteVal']));
+  if(isset($_POST['postsValForChangeData'])){
+    $post = getPostWithId(htmlentities($_POST['postsValForChangeData']));
 
     var_dump($post);
-    
+
     $titre = "Modifier poste";
     include "$racine/vue/entete.html.php";
     include "$racine/vue/vueModifierSalle.php";

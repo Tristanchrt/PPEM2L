@@ -9,6 +9,7 @@
   $salles = getSalle();
   $posts = getPoste();
   $typePc = getTypePc();
+  $postSelected = array();
 
   $requestUpdate = false;
 
@@ -25,9 +26,9 @@
   }
   if(isset($_POST['postsValForChangeData'])){
 
-    $post = getPostWithId(htmlentities($_POST['postsValForChangeData']));
+    $postSelected = getPostWithId(htmlentities($_POST['postsValForChangeData']));
 
-    var_dump($post);
+    var_dump($postSelected);
 
     $titre = "Modifier poste";
     include "$racine/vue/entete.html.php";

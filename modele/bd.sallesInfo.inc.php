@@ -183,7 +183,7 @@
             $req = $cnx->prepare("SELECT * FROM poste WHERE nPoste =:nPoste");
             $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
             $req->execute();
-            $resultat = $req->fetch(PDO::FETCH_ASSOC);
+            $resultat = $req->fetch(PDO::FETCH_OBJ);
 
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();

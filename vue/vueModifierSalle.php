@@ -23,23 +23,30 @@
 		    <label>Selectionner un poste:</label>
 
 			<select id="allPosts" name="postsVal">
-
-			      		<?php
-			        	foreach($posts as $unePosts => $post) {
-			        		 ?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
-			        		 <?php
-			        	} ?>
+				<?php if(empty($postSelected)){?>
+					 				<option value=''> </option><?php
+			      	}
+		        	foreach($posts as $unePosts => $post) {
+		        		 ?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+		        		 <?php
+		        	} ?>
 			</select> <br><br>
-
 			<label>Modifier le nom du poste :</label>
-		    <input type="text" name="namePostChange" size="25"><br><br>
+		    <input type="text" name="namePostChange" size="25" value="<?= $namePoste = (!empty($postSelected)) ? $namePoste = "$postSelected->nomPoste" : $namePoste = "";?>"><br><br>
 
 			<label>Selectionner la salle a changer</label>
 			<select id="salle" name="changeSalleVal">
 			      		<?php
 			        	foreach($salles as $uneSalle => $salle) {
-			        		 ?> <option value="<?= $salle->nSalle?>"> <?=$salle->nomSalle?> </option>;
-			        		 <?php
+									if(!empty($postSelected)){
+										if($salle->nSalle == $postSelected->nSalle){
+											?> <option value="<?= $salle->nSalle?>" selected> <?=$salle->nomSalle?> </option>;
+	 			        		 <?php
+									 }else {
+										 ?> <option value="<?= $salle->nSalle?>"> <?=$salle->nomSalle?> </option>;
+				        		 <?php
+									 }
+									}
 			        	} ?>
 			</select><br><br>
 
@@ -48,8 +55,15 @@
 			<select id="typePc" name="typePost">
 					<?php
 					foreach($typePc as $untypePc => $typePcVal) {
-						 ?> <option value="<?= $typePcVal->typeLP?>"> <?=$typePcVal->nomType?> </option>;
-						 <?php
+						if(!empty($postSelected)){
+							if($typePcVal->typeLP == $postSelected->typePoste){
+								?> <option value="<?= $typePcVal->typeLP?>" selected> <?=$typePcVal->nomType?> </option>;
+								<?php
+							}else {
+								?> <option value="<?= $typePcVal->typeLP?>"> <?=$typePcVal->nomType?> </option>;
+	 						 <?php
+							}
+						}
 					} ?>
 			</select>
 
@@ -58,22 +72,12 @@
 			  <input type="submit" name="buttonChangePoste">
 
 		</form>
-			<form action="./?action=modifierSalle&nPoste=" method="GET">
 
-	 			<input type="submit" name="buttonChangePostegfgf" value="testss">
-
-			</form>
 	</div>
 
 		<script>
-
-
 				$('#allPosts').change(function(e) {
-					var valPostes = $('#allPosts').val();
-					console.log(valPostes);
-		      $('#postesSelect').attr('value', valPostes);
+		      $('#postesSelect').attr('value', $('#allPosts').val());
 		      $('#changeDataForm').submit();
 		    });
-
-
 		</script>

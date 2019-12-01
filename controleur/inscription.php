@@ -4,10 +4,10 @@
       $racine = "..";
   }
 
-  include_once "$racine/modele/bd.utilisateur.inc.php";
+  include_once "$racine/modele/bd.connexion.php";
 
   $inscrit = false;
-  $msg="";
+  $msg = "";
 
   if (isset($_POST["mailU"]) && isset($_POST["mdpU"]) && isset($_POST["pseudoU"])) {
 

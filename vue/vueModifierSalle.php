@@ -12,23 +12,31 @@
 			</form>
 
 		<form action="./?action=modifierSalle" method="POST">
-
 		    <label>Selectionner un poste:</label>
-
 			<select id="allPosts" name="postsVal">
-				<?php if(empty($postSelected)){?>
+				<?php if(empty($postSelected)){ ?>
 					 				<option value=''> </option><?php
 			      	}
 		        	foreach($posts as $unePosts => $post) {
-		        		 ?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+								if(!empty($postSelected)){
+									if($post->nPoste == $postSelected->nPoste){
+		        		 ?> <option value="<?= $post->nPoste?>" selected> <?=$post->nomPoste?> </option>;
 		        		 <?php
-		        	} ?>
+							 		}else{
+										?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+	 		        		 <?php
+							 		}
+								}else {
+									?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+								 <?php
+								}
+							}?>
 			</select> <br><br>
 
 			<label>Modifier le nom du poste :</label>
 		    <input type="text" name="namePostChange" size="25" value="<?= (!empty($postSelected)) ? "$postSelected->nomPoste" : "";?>"><br><br>
-
 			<label>Selectionner la salle a changer</label>
+
 			<select id="salle" name="changeSalleVal">
 			      		<?php
 			        	foreach($salles as $uneSalle => $salle) {
@@ -43,7 +51,6 @@
 									}
 			        	} ?>
 			</select><br><br>
-
 
 			<label>Modifier le type du poste :</label>
 			<select id="typePc" name="typePost">

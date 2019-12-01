@@ -19,7 +19,7 @@
     <body>
     <nav>
         <ul id="menuGeneral">
-            <?php /* test */ if(isLoggedOn()){ ?>
+            <?php if(isLoggedOn()){ ?>
             <li class="col-lg-2"><a href="./?action=accueil">Accueil</a></li>
             <li class="col-lg-2"><a href="./?action=profil">Mon Profil</a></li>
           <?php }
@@ -35,7 +35,7 @@
           }?>
         </ul>
     </nav>
-    
+
     <div id="blocTitre">
       <h1><?= $titre ?></h1>
     </div>

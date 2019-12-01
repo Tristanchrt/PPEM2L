@@ -1,5 +1,3 @@
-<h1><?= $titre ?></h1>
-
 
 
 <p id="posteTitle">Salle numero <?= $numSalle; ?></p>

@@ -31,7 +31,7 @@
   if ($inscrit) {
       header('Location: ./?action=connexion');
   } else {
-      $titre = "Inscription pb";
+      $titre = "Inscription";
       include "$racine/vue/entete.html.php";
       include "$racine/vue/vueInscription.php";
       include "$racine/vue/pied.html.php";

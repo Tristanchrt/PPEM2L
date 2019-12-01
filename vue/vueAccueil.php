@@ -1,10 +1,24 @@
 
-  <h1><?= $titre ?></h1>
-
   <div class="listeSalle">
       <?php for ($i = 0; $i < count($salle); $i++) { ?>
+        <a href="./?action=detail&nSalle=<?= $salle[$i]->nSalle; ?>" >
           <div class="salle">
-          	<span class="salleName"> <a href="./?action=detail&nSalle=<?= $salle[$i]->nSalle; ?>" > <?= $salle[$i]->nomSalle; ?> </a> </span><br /><br />
+          	<span class="salleName">  <?= $salle[$i]->nomSalle; ?>  </span><br /><br />
       	  </div>
+          </a>
       <?php } ?>
   </div>
+
+
+
+  <script>
+
+    $('.salle').mouseover(function(e) {
+      $(this).addClass('blocSalle');
+    });
+
+    $('.salle').mouseleave(function(event) {
+      $('.salle').removeClass('blocSalle');
+    });
+
+  </script>

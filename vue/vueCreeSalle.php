@@ -1,6 +1,4 @@
 
-<h1><?= $titre ?></h1>
-
 <div class="creeSalle">
     <form action="./?action=creeSalle" method="POST">
 

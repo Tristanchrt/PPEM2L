@@ -2,8 +2,8 @@
 
 
 h1,h2,h3,h4 {
-    font-family: Futura;	
-    background-color : rgba(0,0,0,0.1);
+    font-family: Futura;
+    padding: 12px 8px 10px 5px;
 }
 
 td.cell {
@@ -23,7 +23,7 @@ tr:nth-child(odd){
     border-style: solid;
     border-width : 1px;
     border-color : rgb(245,245,245);
-    display:inline-block;  
+    display:inline-block;
     text-align:initial;
 }
 

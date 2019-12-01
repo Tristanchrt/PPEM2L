@@ -1,7 +1,6 @@
 
 
   <div class="blocLogin">
-    <h1>Connexion</h1>
     <form action="./?action=connexion" method="POST">
 
         <input type="text" name="mailU" placeholder="Email de connexion" /><br />

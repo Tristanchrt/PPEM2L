@@ -1,9 +1,4 @@
 
-
-	<h1>
-		<?= $titre ?>
-	</h1>
-
 	<div id="vueModifierSalle" class="modifierSalle">
 
 		<?php if($requestUpdate){ ?>
@@ -29,7 +24,7 @@
 		        		 <?php
 		        	} ?>
 			</select> <br><br>
-			
+
 			<label>Modifier le nom du poste :</label>
 		    <input type="text" name="namePostChange" size="25" value="<?= (!empty($postSelected)) ? "$postSelected->nomPoste" : "";?>"><br><br>
 

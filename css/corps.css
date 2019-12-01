@@ -102,11 +102,33 @@ img.aimer{
 	border-radius: 2px;
 }
 .salle{
-  background-color:#E2E2E2;
+  background-color:#575FC0;
   padding: 20px 20px 20px 20px;
-  margin: 11px 10px 4px 4px;
+  margin: 15px 10px 4px 4px;
   height: 133px;
 }
 .salleName{
-  font-size: 22px;
+  font-size: 25px;
+	position: absolute;
+	margin-left: 43%;
+	color: white;
+}
+.blocSalle{
+	background-color: #575FC0;
+	padding: 20px 20px 20px 20px;
+	margin: 15px 10px 4px 4px;
+	height: 133px;
+	box-shadow: 3px 3px 7px 3px rgba(0,0,0,0.5);
+}
+#blocTitre {
+	position: absolute;
+	top: 15px;
+	margin-top: calc(var(--hauteurMenuGene) + var(--margeMenuHaut));
+	padding-left: 9px;
+	position: absolute;
+	z-index: 1;
+	width: 62%;
+	margin-left: 19%;
+	margin-bottom: 78px;
+	background-color: #E0E2F5;
 }

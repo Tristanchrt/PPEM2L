@@ -7,6 +7,7 @@
 	include_once "$racine/modele/bd.sallesInfo.inc.php";
 
 	$salle = getSalle();
+	$typePc = getTypePc();
 
 	for ($i = 0; $i < count($salle); $i++)
 		$postSalle[$i] = getPosteSalle($salle[$i]->nSalle);

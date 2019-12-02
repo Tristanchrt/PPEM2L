@@ -26,7 +26,7 @@
         	} ?>
     	</select>
             <br>
-        <input type="submit" name="buttonCrearePost">
+        <input class="BtnModifierPoste" type="submit" name="buttonCrearePost">
     </form>
 
 </div>

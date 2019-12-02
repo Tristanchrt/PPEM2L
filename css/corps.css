@@ -147,3 +147,13 @@ img.aimer{
   padding: 10px 6px 7px 11px;
   margin-bottom: 31px;
 }
+.titleDataPoste {
+  font-size: 18px;
+  color:#212121;
+	font-weight: bold;
+}.formChangeData{
+	padding: 8px 14px 19px 19px;
+}
+.lblModifiePoste {
+    font-size: 21px;
+}

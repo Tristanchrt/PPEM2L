@@ -7,12 +7,13 @@
 			</div>
 		<?php } ?>
 
-			<form id="changeDataForm" ref="formChangeData" action="./?action=modifierSalle" method="POST">
+			<form id="changeDataForm" action="./?action=modifierSalle" method="POST">
 				<input id="postesSelect" type="text" name="postsValForChangeData" style="display: none;"/>
 			</form>
 
-		<form action="./?action=modifierSalle" method="POST">
-		    <label>Selectionner un poste:</label>
+		<form class="formChangeData" action="./?action=modifierSalle" method="POST">
+
+		  <label class="lblModifiePoste" >Selectionner un poste:</label>
 			<select id="allPosts" name="postsVal">
 				<?php if(empty($postSelected)){ ?>
 					 				<option value=''> </option><?php
@@ -33,10 +34,10 @@
 							}?>
 			</select> <br><br>
 
-			<label>Modifier le nom du poste :</label>
+			<label class="lblModifiePoste" >Modifier le nom du poste :</label>
 		    <input type="text" name="namePostChange" size="25" value="<?= (!empty($postSelected)) ? "$postSelected->nomPoste" : "";?>"><br><br>
-			<label>Selectionner la salle a changer</label>
 
+			<label class="lblModifiePoste" >Selectionner la salle a changer</label>
 			<select id="salle" name="changeSalleVal">
 			      		<?php
 			        	foreach($salles as $uneSalle => $salle) {
@@ -52,7 +53,7 @@
 			        	} ?>
 			</select><br><br>
 
-			<label>Modifier le type du poste :</label>
+			<label class="lblModifiePoste" >Modifier le type du poste :</label>
 			<select id="typePc" name="typePost">
 					<?php
 					foreach($typePc as $untypePc => $typePcVal) {
@@ -69,8 +70,8 @@
 			</select>
 
 			<br />
-
-			  <input type="submit" name="buttonChangePoste">
+	<br />	<br />
+			  <input class="BtnModifierPoste" type="submit" value="Modifier poste" name="buttonChangePoste">
 
 		</form>
 

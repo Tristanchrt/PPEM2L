@@ -4,15 +4,24 @@
            <div class="row">
             <div class="infoPostes col-lg-6">
                 <span>
-                    <p> Nom : <?= $postSalle[$ii]->nomPoste ?> </p>
+                    <span class="titleDataPoste" > Nom du poste :  </span> <span> <?= $postSalle[$ii]->nomPoste ?> </span> <br />
                 </span>
                 <span>
-                    <p> Administarateur : <?= $postSalle[$ii]->ad ?> </p>
+                    <span class="titleDataPoste" > Adresse IP :  </span> <span> <?= $postSalle[$ii]->indIP ?> </span>  <br />
                 </span>
-                <br>
-                <br>
+                <span>
+                    <span class="titleDataPoste" > Administarateur :  </span> <span> <?= $postSalle[$ii]->ad ?> </span>  <br />
+                </span>
+                <span>
+                  <?php foreach ($typePc as $typePcKey => $typePcVal) {
+                      if($typePcVal->typeLP == $postSalle[$ii]->typePoste){
+                        ?>
+                          <span class="titleDataPoste" > Type de poste :  </span> <span> <?= $typePcVal->nomType ?> </span>  <br />  <?php
+                      }
+                  }?>
+                </span>
             </div>
-              <form action="./?action=modifierSalle" method="POST">
+              <form action="./?action=modifierPoste" method="POST">
                 <div class="col-lg-6">
                   <input  value="<?= $postSalle[$ii]->nPoste ?>" type="text" name="postsValForChangeData" style="display: none;"/>
                   <button type="submit" class="BtnModifierPoste"> Modifier Poste </button>
@@ -21,6 +30,6 @@
           </div>
             <br>
             <br>
-        <?php  } ?>                
+        <?php  } ?>
+
     </ul>
-			</form>

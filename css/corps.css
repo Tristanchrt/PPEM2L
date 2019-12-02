@@ -155,8 +155,16 @@ img.aimer{
 	padding: 8px 14px 19px 19px;
 }
 .lblModifiePoste {
-    font-size: 21px;
+  font-size: 21px;
 }
 .creeSalle {
-    padding: 19px 14px 18px 19px;
+  padding: 19px 14px 18px 19px;
+}
+.infoBlcProfil {
+  padding: 8px;
+}.blocLogin {
+  margin-left: 347px;
+  margin-top: 50px;
+}.blcButtonConnect{
+	display: flex;
 }

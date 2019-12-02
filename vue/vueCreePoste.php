@@ -27,7 +27,7 @@
         		 <?php
         	} ?>
     	</select>
-
+      <br /><br />
         <input class="BtnModifierPoste" type="submit" name="buttonCrearePost">
     </form>
 

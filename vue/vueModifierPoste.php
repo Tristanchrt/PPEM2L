@@ -7,11 +7,11 @@
 			</div>
 		<?php } ?>
 
-			<form id="changeDataForm" action="./?action=modifierSalle" method="POST">
+			<form id="changeDataForm" action="./?action=modifierPoste" method="POST">
 				<input id="postesSelect" type="text" name="postsValForChangeData" style="display: none;"/>
 			</form>
 
-		<form class="formChangeData" action="./?action=modifierSalle" method="POST">
+		<form class="formChangeData" action="./?action=modifierPoste" method="POST">
 
 		  <label class="lblModifiePoste" >Selectionner un poste:</label>
 			<select id="allPosts" name="postsVal">

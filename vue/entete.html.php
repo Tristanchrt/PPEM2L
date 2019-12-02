@@ -35,10 +35,10 @@
               $user  = getUtilisateurByName($_SESSION["name"]);
                $level = $user['level'];
               if($level <= 2){ ?>
-                <li class="col-lg-2"><a href="./?action=creeSalle">Cree postes</a></li>
-                <li class="col-lg-2"><a href="./?action=modifierSalle">Modifier postes</a></li>
+                <li class="col-lg-2"><a href="./?action=creePoste">Cree poste</a></li>
+                <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier poste</a></li>
             <?php } if($level <= 1){ ?>
-              <li class="col-lg-1"><a href="./?action=modifierSalle">Modifier Salle</a></li>
+              <li class="col-lg-1"><a href="./?action=modifierPoste">Modifier Salle</a></li>
             <?php }
           }?>
         </ul>
@@ -46,7 +46,8 @@
     </nav>
 
     <div id="blocTitre">
-      <h1><?= $titre ?></h1>
+      <h1><?= $titre?></h1>
+
     </div>
 
     <div id="corps">

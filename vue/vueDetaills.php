@@ -21,8 +21,6 @@
           </div>
             <br>
             <br>
-        <?php  } ?>
-
-                    
+        <?php  } ?>                
     </ul>
 			</form>

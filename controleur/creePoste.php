@@ -14,7 +14,6 @@
   $titre = "Cree un poste";
   include "$racine/vue/entete.html.php";
 
-
   if(isset($_POST["namePost"]) && isset($_POST["salleVal"]) && isset($_POST["typePost"])){
 
     $namePost = htmlentities($_POST["namePost"]);
@@ -26,5 +25,5 @@
 
   }
 
-  include "$racine/vue/vueCreeSalle.php";
+  include "$racine/vue/vueCreePoste.php";
   include "$racine/vue/pied.html.php";

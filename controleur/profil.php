@@ -6,6 +6,7 @@
 
   include_once "$racine/modele/bd.connexion.php";
 
+  $infoUser = InfoUtilisateur();
 
   $titre = "Mon profil";
   include "$racine/vue/entete.html.php";

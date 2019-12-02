@@ -30,12 +30,12 @@
 
     $titre = "Modifier poste";
     include "$racine/vue/entete.html.php";
-    include "$racine/vue/vueModifierSalle.php";
+    include "$racine/vue/vueModifierPoste.php";
     include "$racine/vue/pied.html.php";
 
   }else {
     $titre = "Modifier poste";
     include "$racine/vue/entete.html.php";
-    include "$racine/vue/vueModifierSalle.php";
+    include "$racine/vue/vueModifierPoste.php";
     include "$racine/vue/pied.html.php";
   }

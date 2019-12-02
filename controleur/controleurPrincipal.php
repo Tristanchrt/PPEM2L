@@ -8,8 +8,8 @@ function controleurPrincipal($action) {
     $lesActions["inscription"] = "inscription.php";
     $lesActions["deconnexion"] = "deconnexion.php";
     $lesActions["profil"] = "profil.php";
-    $lesActions["creeSalle"] = "creeSalle.php";
-    $lesActions["modifierSalle"] = "modifierSalle.php";
+    $lesActions["creePoste"] = "creePoste.php";
+    $lesActions["modifierPoste"] = "modifierPoste.php";
 
     if (array_key_exists($action, $lesActions)) {
       $action = (isset($_GET["action"])) ? $_GET["action"] : $action = (!isset($_SESSION["name"])) ? "connexion" : "defaut";

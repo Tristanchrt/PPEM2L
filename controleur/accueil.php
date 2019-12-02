@@ -7,14 +7,21 @@
 	include_once "$racine/modele/bd.sallesInfo.inc.php";
 
 	$salle = getSalle();
+	$typePc = getTypePc();
 
 	for ($i = 0; $i < count($salle); $i++)
 		$postSalle[$i] = getPosteSalle($salle[$i]->nSalle);
 
 	if(isset($_GET['nSalle'])){
 
+		for ($i = 0; $i < count($salle); $i++){
+			if($salle[$i]->nSalle == htmlentities($_GET['nSalle'])){
+				$nomSalle = $salle[$i]->nomSalle;
+				$numSalle = $salle[$i]->nSalle;
+			}
+		}
+
 		$titre = "Detail de la salle";
-		$numSalle = htmlentities($_GET['nSalle']);
 		$postSalle = getPosteSalle($numSalle);
 		include "$racine/vue/entete.html.php";
 		include "$racine/vue/vueDetaills.php";

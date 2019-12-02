@@ -132,3 +132,31 @@ img.aimer{
 	margin-bottom: 78px;
 	background-color: #E0E2F5;
 }
+.BtnModifierPoste {
+  margin-top: 32px;
+}
+.BtnModifierPoste {
+  width: 158px;
+  padding: 9px 0px 11px 0px;
+  border-radius: 13px;
+  background-color:#636697;
+	color: white;
+}
+#posteTitle {
+  font-size: 34px;
+  padding: 10px 6px 7px 11px;
+  margin-bottom: 31px;
+}
+.titleDataPoste {
+  font-size: 18px;
+  color:#212121;
+	font-weight: bold;
+}.formChangeData{
+	padding: 8px 14px 19px 19px;
+}
+.lblModifiePoste {
+    font-size: 21px;
+}
+.creeSalle {
+    padding: 19px 14px 18px 19px;
+}

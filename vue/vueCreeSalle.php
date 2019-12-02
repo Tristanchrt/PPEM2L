@@ -7,9 +7,10 @@
           <strong>Creation effectuer !</strong>
         </div>
       <?php } ?>
-    	<label>Nom post :</label>
+    	<label class="lblModifiePoste" >Nom post :</label>
     	<input type="text" name="namePost" size="25"><br><br>
 
+      <label class="lblModifiePoste" >Salle d'installation du poste :</label>
     	<select id="salle" name="salleVal">
       		<?php
         	foreach($salles as $uneSalle => $salle) {
@@ -17,7 +18,8 @@
         		 <?php
         	} ?>
     	</select>
-
+      <br><br>
+      <label class="lblModifiePoste" >Type de poste :</label>
     	<select id="typePc" name="typePost">
       		<?php
         	foreach($typePc as $untypePc => $typePcVal) {
@@ -25,8 +27,8 @@
         		 <?php
         	} ?>
     	</select>
-            <br>
-        <input type="submit" name="buttonCrearePost">
+            <br><br>
+        <input class="BtnModifierPoste" type="submit" name="buttonCrearePost">
     </form>
 
 </div>

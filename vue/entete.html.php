@@ -16,13 +16,21 @@
             @import url("css/corps.css");
         </style>
     </head>
-    <body>
+
+    <?php
+    if(isLoggedOn()){ ?>
+      <body>
+    <?php }
+    else { ?>
+     <body class="body2"> <?php
+    } ?>
+
     <nav>
+        <?php if(isLoggedOn()){ ?>
         <ul id="menuGeneral">
-            <?php /* test */ if(isLoggedOn()){ ?>
             <li class="col-lg-2"><a href="./?action=accueil">Accueil</a></li>
             <li class="col-lg-2"><a href="./?action=profil">Mon Profil</a></li>
-          <?php }
+        <?php
           if(isset($_SESSION["name"])){
               $user  = getUtilisateurByName($_SESSION["name"]);
                $level = $user['level'];
@@ -34,8 +42,9 @@
             <?php }
           }?>
         </ul>
+    <?php } ?>
     </nav>
-    
+
     <div id="blocTitre">
       <h1><?= $titre ?></h1>
     </div>

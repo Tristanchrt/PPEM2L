@@ -12,7 +12,7 @@ function controleurPrincipal($action) {
     $lesActions["modifierPoste"] = "modifierPoste.php";
 
     if (array_key_exists($action, $lesActions)) {
-      $action = (isset($_GET["action"])) ? $_GET["action"] : $action = (!isset($_SESSION["name"])) ? "connexion" : "defaut";
+      // $action = (isset($_GET["action"])) ? $_GET["action"] : $action = (!isset($_SESSION["name"])) ? "connexion" : "defaut";
       // $action = (isset($_SESSION["name"])) ? "connexion" : $action = (isset($_GET["action"])) ? $_GET["action"] : "defaut";
       return $lesActions[$action];
     }

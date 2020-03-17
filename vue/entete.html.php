@@ -25,6 +25,8 @@
      <body class="body2"> <?php
     } ?>
 
+    
+    <!-- MENU -->
     <nav>
         <?php if(isLoggedOn()){ ?>
         <ul id="menuGeneral">

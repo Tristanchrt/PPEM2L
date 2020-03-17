@@ -6,30 +6,46 @@
 
 	include_once "$racine/modele/bd.sallesInfo.inc.php";
 
-	$salle = getSalle();
-	$typePc = getTypePc();
+	$titre = "Accueil";
 
-	for ($i = 0; $i < count($salle); $i++)
-		$postSalle[$i] = getPosteSalle($salle[$i]->nSalle);
+	if(isLoggedOnAsRole(2) || isLoggedOnAsRole(1) || isLoggedOnAsRole(0) ){
 
-	if(isset($_GET['nSalle'])){
+		$salle = getSalle();
+		$typePc = getTypePc();
 
-		for ($i = 0; $i < count($salle); $i++){
-			if($salle[$i]->nSalle == htmlentities($_GET['nSalle'])){
-				$nomSalle = $salle[$i]->nomSalle;
-				$numSalle = $salle[$i]->nSalle;
+		for ($i = 0; $i < count($salle); $i++)
+			$postSalle[$i] = getPosteSalle($salle[$i]->nSalle);
+
+		if (isset($_GET['nSalle'])) {
+
+			for ($i = 0; $i < count($salle); $i++) {
+				if ($salle[$i]->nSalle == htmlentities($_GET['nSalle'])) {
+					$nomSalle = $salle[$i]->nomSalle;
+					$numSalle = $salle[$i]->nSalle;
+				}
 			}
+
+
+
+			$titre = "Detail de la salle";
+			$postSalleBySalle = getPosteSalle($numSalle);
+
+			include "$racine/vue/entete.html.php";
+			include "$racine/vue/vueDetaills.php";
+			include "$racine/vue/pied.html.php";
+		} else {
+
+			include "$racine/vue/entete.html.php";
+			include "$racine/vue/vueAccueil.php";
+			include "$racine/vue/pied.html.php";
 		}
-
-		$titre = "Detail de la salle";
-		$postSalle = getPosteSalle($numSalle);
+	}else{
+		$titre = "Erreur de chargement";
 		include "$racine/vue/entete.html.php";
-		include "$racine/vue/vueDetaills.php";
-		include "$racine/vue/pied.html.php";
-
-	}else {
-		$titre = "Accueil";
-		include "$racine/vue/entete.html.php";
-		include "$racine/vue/vueAccueil.php";
+		include "$racine/vue/vueErrorPage.php";
 		include "$racine/vue/pied.html.php";
 	}
+
+	
+
+

@@ -34,11 +34,11 @@
           if(isset($_SESSION["name"])){
               $user  = getUtilisateurByName($_SESSION["name"]);
                $level = $user['level'];
-              if($level <= 2){ ?>
-                <li class="col-lg-2"><a href="./?action=creePoste">Cree poste</a></li>
+              if($level > 1){ ?>
+                <li class="col-lg-2"><a href="./?action=creerPoste">Cree poste</a></li>
                 <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier poste</a></li>
-            <?php } if($level <= 1){ ?>
-              <li class="col-lg-1"><a href="./?action=modifierPoste">Modifier Salle</a></li>
+            <?php } if($level == 1){ ?>
+              <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier Salle</a></li>
             <?php }
           }?>
         </ul>

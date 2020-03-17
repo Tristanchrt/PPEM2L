@@ -6,6 +6,7 @@
 
   include "$racine/modele/bd.connexion.php";
 
+
   // recuperation des donnees GET, POST, et SESSION
   if (isset($_POST["mailU"]) && isset($_POST["mdpU"])){
       $mailU = htmlentities($_POST["mailU"]);

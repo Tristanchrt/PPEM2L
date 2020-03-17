@@ -13,7 +13,7 @@ function login($name, $mdpU) {
     if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
         $_SESSION["name"] = $name;
         $_SESSION["password"] = $mdpBD;
-        var_dump($_SESSION["name"]);
+        $_SESSION["level"] = $util['level'];
     }
 }
 
@@ -23,6 +23,7 @@ function logout() {
     }
     unset($_SESSION["name"]);
     unset($_SESSION["password"]);
+    unset($_SESSION["level"]);
 }
 
 function getNameULoggedOn(){
@@ -50,6 +51,15 @@ function isLoggedOn() {
     }
     return $ret;
 }
+function isLoggedOnAsRole($level)
+{
+    $ret = false;
+    if (isLoggedOn() && ($_SESSION["level"] == $level)) {
+        $ret = true;
+    }
+    return $ret;
+}
+
 function InfoUtilisateur() {
     if (!isset($_SESSION)) {
         session_start();

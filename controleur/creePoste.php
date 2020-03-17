@@ -6,24 +6,30 @@
 
   include "$racine/modele/bd.sallesInfo.inc.php";
 
-  $salles = getSalle();
-  $typePc = getTypePc();
-
-  $checkCreatePoste = false;
-
   $titre = "Cree un poste";
-  include "$racine/vue/entete.html.php";
 
-  if(isset($_POST["namePost"]) && isset($_POST["salleVal"]) && isset($_POST["typePost"])){
+  if(isLoggedOnAsRole(2)){
+    $salles = getSalle();
+    $typePc = getTypePc();
 
-    $namePost = htmlentities($_POST["namePost"]);
-    $salleVal = htmlentities($_POST["salleVal"]);
-    $typePost = htmlentities($_POST["typePost"]);
-    $idUser = $user['id'];
+    $checkCreatePoste = false;
 
-    $checkCreatePoste = creePost($namePost, $salleVal, $typePost, $idUser);
+    if (isset($_POST["namePost"]) && isset($_POST["salleVal"]) && isset($_POST["typePost"])) {
 
+      $namePost = htmlentities($_POST["namePost"]);
+      $salleVal = htmlentities($_POST["salleVal"]);
+      $typePost = htmlentities($_POST["typePost"]);
+      $idUser = 1;
+      
+      $checkCreatePoste = creePost($namePost, $salleVal, $typePost, $idUser);
+    }
+
+    include "$racine/vue/entete.html.php";
+    include "$racine/vue/vueCreePoste.php";
+    include "$racine/vue/pied.html.php";
+
+  }else{
+    include "$racine/vue/entete.html.php";
+    include "$racine/vue/vueErrorPage.php";
+    include "$racine/vue/pied.html.php";
   }
-
-  include "$racine/vue/vueCreePoste.php";
-  include "$racine/vue/pied.html.php";

@@ -29,7 +29,7 @@
         try {
             $cnx = connexionPDO();
             $req = $cnx->prepare("SELECT * FROM poste WHERE nSalle=:nSalle");
-            $req->bindValue(':nSalle', $nSalle, PDO::PARAM_INT);
+            $req->bindValue(':nSalle', $nSalle, PDO::PARAM_STR);
             $req->execute();
 
             $ligne = $req->fetch(PDO::FETCH_OBJ);
@@ -87,7 +87,10 @@
 
       try {
 
+
             $cnx = connexionPDO();
+
+            $idUser = 1;
 
             $namePostt = getIpSalle($salleVal);
             $ipSalle = $namePostt['indIP'];

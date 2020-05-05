@@ -5,8 +5,8 @@
 
 
   include "$racine/modele/bd.sallesInfo.inc.php";
-
-  $titre = "Cree un poste";
+  
+  $titre = "Création de poste";
 
   if(isLoggedOnAsRole(2)){
     $salles = getSalle();

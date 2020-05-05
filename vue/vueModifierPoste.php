@@ -77,9 +77,9 @@
 
 	</div>
 
-		<script>
-				$('#allPosts').change(function(e) {
-		      $('#postesSelect').attr('value', $('#allPosts').val());
-		      $('#changeDataForm').submit();
-		    });
-		</script>
+	<script>
+		$('#allPosts').change(function(e) {
+			$('#postesSelect').attr('value', $('#allPosts').val());
+			$('#changeDataForm').submit();
+		});
+	</script>

@@ -193,6 +193,69 @@
         return $resultat;
     }
 
+    function getLogiciel() {
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT * FROM logiciel");
+
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function getLogicielByPost($nPoste) {
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT * FROM installer WHERE nPoste = :nPoste");
+            $req->bindValue(':nPoste', $nPoste, PDO::PARAM_STR);
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            if($ligne == null)
+                return 1;
+                
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_ASSOC);
+            }
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+    function updateLogInPost($logInPost, $postId) {
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("DELETE FROM installer WHERE nPoste = :nPoste");
+            $req->bindValue(':nPoste', $postId, PDO::PARAM_STR);
+            $resultat = $req->execute();
+
+            foreach($logInPost as $key => $log){
+                $req = $cnx->prepare("INSERT INTO installer (nPoste, nLog, dateIns) VALUES (:nPoste, :logPoste, NOW())");
+                $req->bindValue(':nPoste', $postId, PDO::PARAM_STR);
+                $req->bindValue(':logPoste', $log, PDO::PARAM_STR);
+                $resultat = $req->execute();
+            }
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
 
 
 

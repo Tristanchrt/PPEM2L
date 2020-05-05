@@ -3,10 +3,10 @@
 
 		<?php if ($checkCreatePoste) { ?>
 			<div class="alert alert-success">
-				<strong>Creation effectuer !</strong>
+				<strong>Création effectuée !</strong>
 			</div>
 		<?php } ?>
-		<label class="lblModifiePoste">Nom post :</label>
+		<label class="lblModifiePoste">Nom poste :</label>
 		<input type="text" name="namePost" size="25"><br><br>
 
 		<label class="lblModifiePoste">Salle d'installation du poste :</label>

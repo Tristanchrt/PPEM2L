@@ -7,8 +7,9 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title></title>
+        <title>PPE-M2L</title>
         <style type="text/css">
             @import url("css/base.css");
             @import url("css/form.css");
@@ -29,22 +30,25 @@
     <!-- MENU -->
     <nav>
         <?php if(isLoggedOn()){ ?>
-        <ul id="menuGeneral">
-            <li class="col-lg-2"><a href="./?action=accueil">Accueil</a></li>
-            <li class="col-lg-2"><a href="./?action=profil">Mon Profil</a></li>
-        <?php
-          if(isset($_SESSION["name"])){
-              $user  = getUtilisateurByName($_SESSION["name"]);
-               $level = $user['level'];
-              if($level > 1){ ?>
-                <li class="col-lg-2"><a href="./?action=creerPoste">Cree poste</a></li>
-                <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier poste</a></li>
-            <?php } if($level == 1){ ?>
-              <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier Salle</a></li>
-            <?php }
-          }?>
-        </ul>
-    <?php } ?>
+          <ul id="menuGeneral">
+              <li class="col-lg-2"><a href="./?action=accueil">Accueil</a></li>
+              <li class="col-lg-2"><a href="./?action=profil">Mon Profil</a></li>
+          <?php
+            if(isset($_SESSION["name"])){
+                $user  = getUtilisateurByName($_SESSION["name"]);
+                $level = $user['level'];
+                if($level > 1){ ?>
+                  <li class="col-lg-2"><a href="./?action=creerPoste">Crée poste</a></li>
+                  <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier poste</a></li>
+                  <li class="col-lg-2"><a href="./?action=gestionLogiciel">Gestion des logicels</a></li>
+                  <li class="col-lg-2"><a href="./?action=infoPoste">Information postes</a></li>
+                <?php } if($level == 1){ ?>
+                  <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier Salle</a></li>
+                  <li class="col-lg-2"><a href="./?action=infoPoste">Information postes</a></li>
+              <?php }
+            }?>
+          </ul>
+        <?php } ?>
     </nav>
 
     <div id="blocTitre">

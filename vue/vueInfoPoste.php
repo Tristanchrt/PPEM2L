@@ -1,0 +1,1 @@
+<h2>Information complémentaire sur les postes</h2>

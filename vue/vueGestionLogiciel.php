@@ -93,37 +93,3 @@
     });
 
 </script>
-
-<style>
-    .blcLogInPostDd {
-    display: flex;
-    justify-content: space-around;
-}
-    .blcAllPoste {
-    display: flex;
-    justify-content: space-around;
-}
-.blcLogInPoste {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    border: dashed;  
-}
-.notLogInstall {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    border: dashed;   
-}
-.blcAllPoste{
-    display: flex;
-    flex-direction: column;
-}
-.onePostGestionLog {
-    background-color: #b0c3e9;
-    margin: 10px;
-    padding: 7px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-</style>

@@ -39,18 +39,18 @@
 
 			<label class="lblModifiePoste" >Selectionner la salle a changer</label>
 			<select id="salle" name="changeSalleVal">
-			      		<?php
-			        	foreach($salles as $uneSalle => $salle) {
-									if(!empty($postSelected)){
-										if($salle->nSalle == $postSelected->nSalle){
-											?> <option value="<?= $salle->nSalle?>" selected> <?=$salle->nomSalle?> </option>;
-	 			        		 <?php
-									 }else {
-										 ?> <option value="<?= $salle->nSalle?>"> <?=$salle->nomSalle?> </option>;
-				        		 <?php
-									 }
-									}
-			        	} ?>
+				<?php
+				foreach($salles as $uneSalle => $salle) {
+					if(!empty($postSelected)){
+						if($salle->nSalle == $postSelected->nSalle){
+							?> <option value="<?= $salle->nSalle?>" selected> <?=$salle->nomSalle?> </option>;
+					<?php
+						}else {
+							?> <option value="<?= $salle->nSalle?>"> <?=$salle->nomSalle?> </option>;
+					<?php
+						}
+					}
+				} ?>
 			</select><br><br>
 
 			<label class="lblModifiePoste" >Modifier le type du poste :</label>

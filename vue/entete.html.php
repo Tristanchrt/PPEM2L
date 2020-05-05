@@ -8,6 +8,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>PPE-M2L</title>
         <style type="text/css">
@@ -15,6 +17,7 @@
             @import url("css/form.css");
             @import url("css/cgu.css");
             @import url("css/corps.css");
+            @import url("css/gestionLog.css");
         </style>
     </head>
 
@@ -38,13 +41,13 @@
                 $user  = getUtilisateurByName($_SESSION["name"]);
                 $level = $user['level'];
                 if($level > 1){ ?>
-                  <li class="col-lg-2"><a href="./?action=creerPoste">Crée poste</a></li>
+                  <li class="col-lg-2"><a href="./?action=creerPoste">Créer poste</a></li>
                   <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier poste</a></li>
                   <li class="col-lg-2"><a href="./?action=gestionLogiciel">Gestion des logicels</a></li>
-                  <li class="col-lg-2"><a href="./?action=infoPoste">Information postes</a></li>
+                  <li class="col-lg-2"><a href="./?action=infoPoste">Informations postes</a></li>
                 <?php } if($level == 1){ ?>
                   <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier Salle</a></li>
-                  <li class="col-lg-2"><a href="./?action=infoPoste">Information postes</a></li>
+                  <li class="col-lg-2"><a href="./?action=infoPoste">Informations postes</a></li>
               <?php }
             }?>
           </ul>

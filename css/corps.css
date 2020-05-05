@@ -167,4 +167,7 @@ img.aimer{
   margin-top: 50px;
 }.blcButtonConnect{
 	display: flex;
+}.titleInfoPoste{
+	display: flex;
+	justify-content: space-between;
 }

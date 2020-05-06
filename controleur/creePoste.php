@@ -11,6 +11,7 @@
   if(isLoggedOnAsRole(2)){
     $salles = getSalle();
     $typePc = getTypePc();
+    $logiciels = getLogiciel();
 
     $checkCreatePoste = false;
 
@@ -20,8 +21,10 @@
       $salleVal = htmlentities($_POST["salleVal"]);
       $typePost = htmlentities($_POST["typePost"]);
       $idUser = 1;
+
+      $allLog = (empty($_POST['arrayLog'])) ? 1 : $_POST['arrayLog'];
+      $checkCreatePoste = creePost($namePost, $salleVal, $typePost, $idUser, $allLog);
       
-      $checkCreatePoste = creePost($namePost, $salleVal, $typePost, $idUser);
     }
 
     include "$racine/vue/entete.html.php";

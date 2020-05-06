@@ -20,7 +20,8 @@
         if(isset($_POST['posteinfoLog'])) {
             $logByPosts = getLogicielByPost($_POST['posteinfoLog']);
             $logicels = getLogiciel();
-            $postSelected = $_POST['posteinfoLog'];
+            // $postSelected = $_POST['posteinfoLog'];
+            $postSelected = getPostWithId(htmlentities($_POST['posteinfoLog']));
 
             if($logByPosts != 1){
                 foreach($logicels as $key => $logicel)

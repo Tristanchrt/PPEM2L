@@ -25,9 +25,28 @@
 			?> <option value="<?= $typePcVal->typeLP ?>"> <?= $typePcVal->nomType ?> </option>;
 			<?php
 			} ?>
+		</select><br><br>
+		<label class="lblModifiePoste">Logiciel à installer sur le poste :</label>
+		<select class="logicielPoste" name="arrayLog[]" size="150" multiple="multiple">
+		<?php
+			foreach ($logiciels as $logKey => $logiciel) {
+			?> <option value="<?= $logiciel['nLog'] ?>"> <?= $logiciel['nomLog'] ?> </option>;
+			<?php
+			} 
+		?>
 		</select>
-		<br /><br />
+	
+		<br><br>
 		<input class="BtnModifierPoste" type="submit" name="buttonCrearePost">
 	</form>
 
 </div>
+
+<script>
+	$(document).ready(function() {
+    	$('.logicielPoste').select2({
+			width: '100%'
+		});
+	});
+</script>
+

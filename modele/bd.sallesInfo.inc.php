@@ -104,15 +104,12 @@
         return $resultat;
     }
 
-    function creePost($namePost, $salleVal, $typePost, $idUser){
+    function creePost($namePost, $salleVal, $typePost, $idUser, $allLog){
 
       try {
-
-
             $cnx = connexionPDO();
-
+            
             $idUser = 1;
-
             $namePostt = getIpSalle($salleVal);
             $ipSalle = $namePostt['indIP'];
 
@@ -130,6 +127,10 @@
             $req->bindValue(':salleVal', $salleVal, PDO::PARAM_STR);
 
             $resultat = $req->execute();
+
+
+            if($allLog != 1)
+                updateLogInPost($allLog, $totPost);
 
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();

@@ -10,6 +10,8 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>PPE-M2L</title>
         <style type="text/css">
@@ -21,14 +23,7 @@
         </style>
     </head>
 
-    <?php
-    if(isLoggedOn()){ ?>
-      <body>
-    <?php }
-    else { ?>
-     <body class="body2"> <?php
-    } ?>
-
+    <body>
     
     <!-- MENU -->
     <nav>

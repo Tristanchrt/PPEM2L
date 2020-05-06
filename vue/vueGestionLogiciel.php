@@ -17,7 +17,7 @@
                 }
                 foreach ($posts as $unePosts => $post) {
                     if (!empty($postSelected)) {
-                        if ($post->nPoste == $postSelected) {
+                        if ($post->nPoste == $postSelected->nPoste) {
                     ?> <option value="<?= $post->nPoste ?>" selected> <?= $post->nomPoste ?> </option>;
                     <?php
                     } else {
@@ -29,7 +29,8 @@
                     <?php
                         }
                 } ?>
-    </select> <br><br>
+    </select> Type de poste : <strong><?=$postSelected->typePoste?></strong> ; adresse IP du poste :  <strong><?=$postSelected->indIP?></strong>
+    <br><br>
     <div class="blcLogInPostDd">
         <div class="logInstall">
             <label>Logiciel installé</label>

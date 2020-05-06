@@ -30,5 +30,37 @@ CREATE TRIGGER upd_poste_delete AFTER DELETE ON installer
             UPDATE poste SET nbLog = 0 + countLogInPoste WHERE nPoste = OLD.nPoste;
        END$$
 
+CREATE TRIGGER upd_segmentSalle_insert AFTER INSERT ON salle
+       FOR EACH ROW
+       BEGIN
+            DECLARE countSalleIndIP INT;
+            SET countSalleIndIP = (SELECT COUNT(*) FROM salle WHERE indIP = NEW.indIP);
+            UPDATE segment SET nbSalle = 0 + countSalleIndIP WHERE indIP = NEW.indIP;
+       END$$
+
+CREATE TRIGGER upd_segmentSalle_delete AFTER DELETE ON salle
+       FOR EACH ROW
+       BEGIN
+            DECLARE countSalleIndIP INT;
+            SET countSalleIndIP = (SELECT COUNT(*) FROM salle WHERE indIP = OLD.indIP);
+            UPDATE segment SET nbSalle = 0 + countSalleIndIP WHERE indIP = OLD.indIP;
+       END$$
+
+CREATE TRIGGER upd_segmentNbPoste_insert AFTER INSERT ON poste
+       FOR EACH ROW
+       BEGIN
+            DECLARE countNbPoste INT;
+            SET countNbPoste = (SELECT COUNT(*) FROM poste WHERE indIP = NEW.indIP);
+            UPDATE segment SET nbPoste = 0 + countNbPoste WHERE indIP = NEW.indIP;
+       END$$
+
+CREATE TRIGGER upd_segmentNbPoste_delete AFTER DELETE ON poste
+       FOR EACH ROW
+       BEGIN
+            DECLARE countNbPoste INT;
+            SET countNbPoste = (SELECT COUNT(*) FROM poste WHERE indIP = OLD.indIP);
+            UPDATE segment SET nbPoste = 0 + countNbPoste WHERE indIP = OLD.indIP;
+       END$$
+
 
 

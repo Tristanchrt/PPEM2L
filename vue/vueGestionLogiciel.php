@@ -29,7 +29,7 @@
                     <?php
                         }
                 } ?>
-    </select> Type de poste : <strong><?=$postSelected->typePoste?></strong> ; adresse IP du poste :  <strong><?=$postSelected->indIP?></strong>
+    </select>
     <br><br>
     <div class="blcLogInPostDd">
         <div class="logInstall">

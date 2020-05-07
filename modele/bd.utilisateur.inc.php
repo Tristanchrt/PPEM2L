@@ -5,7 +5,7 @@ include_once "bd.inc.php";
 function getUtilisateurByName($nameU) {
 
     try {
-        $cnx = connexionPDOMRBS();
+        $cnx = connexionPDO();
         $req = $cnx->prepare("select * from mrbs_users where name=:name");
         $req->bindValue(':name', $nameU, PDO::PARAM_STR);
         $req->execute();
@@ -22,7 +22,7 @@ function getUtilisateurByName($nameU) {
 function addUtilisateur($mailU, $mdpU, $pseudoU) {
     try {
 
-        $cnx = connexionPDOMRBS();
+        $cnx = connexionPDO();
         $mdpUCrypt = crypt($mdpU, "sel");
         $req = $cnx->prepare("insert into mrbs_users (name, password, email) values(:pseudoU,:mdpU,:mailU)");
         $req->bindValue(':mailU', $mailU, PDO::PARAM_STR);

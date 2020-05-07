@@ -278,6 +278,28 @@
         return $resultat;
     }
 
+    
+    function getHorraire() {
+        $resultat = array();
+
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT * FROM horraire");
+
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_OBJ);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
 
 
 

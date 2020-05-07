@@ -11,6 +11,7 @@ function controleurPrincipal($action) {
     $lesActions["profil"] = "profil.php";
     $lesActions["creerPoste"] = "creePoste.php";
     $lesActions["modifierPoste"] = "modifierPoste.php";
+    $lesActions["planning"] = "planningAppli.php";
     $lesActions["gestionLogiciel"] = "gestionLogiciel.php";
     $lesActions["infoPoste"] = "infoPoste.php";
 

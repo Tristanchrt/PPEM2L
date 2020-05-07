@@ -35,14 +35,6 @@ body{
     scroll-behavior: smooth;
     background-color : var(--fondC);
 }
-.body2 {
-  font-family: Arial;
-  color: #333;
-    font-size: 14px;
-    line-height: 1.3;
-    scroll-behavior: smooth;
-    background-color:#505050;
-}
 
 #logo {
     text-align : center;

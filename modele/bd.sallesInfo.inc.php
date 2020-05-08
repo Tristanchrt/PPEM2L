@@ -299,6 +299,102 @@
         }
         return $resultat;
     }
+    function getWeekHorraire($salle, $firsDay, $lasDay) {
+        $resultat = array();
+
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT heureid, dateSelected, title, name as userReserved FROM planningreserved 
+                                INNER JOIN mrbs_users ON mrbs_users.id = planningreserved.userReserved WHERE idSalle = :nSalle AND dateSelected 
+                                BETWEEN :fDay AND :lDay ORDER BY dateSelected, heureid ASC");
+            $req->bindValue(':nSalle', $salle, PDO::PARAM_STR);
+            $req->bindValue(':fDay', $firsDay, PDO::PARAM_STR);
+            $req->bindValue(':lDay', $lasDay, PDO::PARAM_STR);
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_OBJ);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $req->fetch(PDO::FETCH_OBJ);
+            }
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+    function updatePlanning($titlePlannig, $hour, $date, $salle, $user) {
+        $resultat = array();
+
+        try {
+            
+            $checkPlan = checkPlanning($hour, $date);
+            var_dump($checkPlan);
+            if(intval($checkPlan['checkPlan']) > 0){
+                return 1;
+            }
+
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("INSERT INTO planningreserved (dateSelected, heureid, userReserved, title, idSalle) 
+                                    VALUES (:dateSelected, :heureid, :userReserved, :title, :idSalle)");
+
+            $req->bindValue(':dateSelected', $date, PDO::PARAM_STR);
+            $req->bindValue(':heureid', $hour, PDO::PARAM_INT);
+            $req->bindValue(':userReserved', $user['id'], PDO::PARAM_INT);
+            $req->bindValue(':title', $titlePlannig, PDO::PARAM_STR);
+            $req->bindValue(':idSalle', $salle, PDO::PARAM_STR);
+ 
+            $req->execute();
+            $resultat = $req;
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+    function checkPlanning($hour, $datee) {
+        $ligne = array();
+
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("SELECT COUNT(*) as checkPlan FROM `planningreserved` WHERE heureid = :hour AND dateSelected = :datee ");
+            $req->bindValue(':hour', $hour, PDO::PARAM_STR);
+            $req->bindValue(':datee', $datee, PDO::PARAM_STR);
+            $req->execute();
+
+            $ligne = $req->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $ligne;
+    }
+    function getAllDateInWeek($week){
+        foreach($week[0] as $key => $f){
+            $firstDayWeek = $f;
+            break;
+        }
+        foreach($week[1] as $key => $f){
+            $deuDayWeek = $f;
+            break;
+        }
+        foreach($week[2] as $key => $f){
+            $treeDayWeek = $f;
+            break;
+        }
+        foreach($week[3] as $key => $f){
+            $thirdDayWeek = $f;
+            break;
+        }
+        foreach($week[4] as $key => $f){
+            $lastDayWeek = $f;
+            break;
+        }
+        return [$firstDayWeek, $deuDayWeek, $treeDayWeek, $thirdDayWeek, $lastDayWeek];
+    }
+
 
 
 

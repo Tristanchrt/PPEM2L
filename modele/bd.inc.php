@@ -24,7 +24,7 @@
       print_r(connexionPDO());
 
       echo "connexionPDOMRBS() : \n";
-      print_r(connexionPDOMRBS());
+
   }
 
 ?>

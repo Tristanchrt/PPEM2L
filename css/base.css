@@ -119,6 +119,7 @@ nav {
     margin: auto auto;
     box-shadow: 0px 0px 6px #999;
     border-radius: 3px;
+    opacity: 0.2;
 }
 #menuGeneral{
     list-style-type: none;

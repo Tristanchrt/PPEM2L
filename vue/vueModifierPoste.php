@@ -19,19 +19,18 @@
 					 				<option value=''> </option><?php
 			      	}
 		        	foreach($posts as $unePosts => $post) {
-								if(!empty($postSelected)){
-									if($post->nPoste == $postSelected->nPoste){
-		        		 ?> <option value="<?= $post->nPoste?>" selected> <?=$post->nomPoste?> </option>;
-		        		 <?php
-							 		}else{
-										?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
-	 		        		 <?php
-							 		}
-								}else {
-									?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
-								 <?php
-								}
-							}?>
+						if(!empty($postSelected)){
+							if($post->nPoste == $postSelected->nPoste){
+								?> <option value="<?= $post->nPoste?>" selected> <?=$post->nomPoste?> </option>;
+								<?php
+							}else{ ?>
+								 <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+							<?php }
+						}else {
+							?> <option value="<?= $post->nPoste?>"> <?=$post->nomPoste?> </option>;
+							<?php
+						}
+					}?>
 			</select> <br><br>
 
 			<label class="lblModifiePoste" >Modifier le nom du poste :</label>

@@ -6,7 +6,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__)
 
 include "$racine/modele/bd.sallesInfo.inc.php";
 
-$titre = "Planning reservation salles";
+$titre = "Planning réservation des salles";
 
 if (isLoggedOnAsRole(2) || isLoggedOnAsRole(1) || isLoggedOnAsRole(0)) {
 
@@ -17,19 +17,21 @@ if (isLoggedOnAsRole(2) || isLoggedOnAsRole(1) || isLoggedOnAsRole(0)) {
     $horraires = getHorraire();
     $salleSecleted ='s01';
     $dateSecleted = date("Y-m-d");
-    
-    
-    if(!empty($_POST['setPlanningTitle']) && !empty($_POST['setPlanningDate']) && !empty($_POST['setPlanningSalle'])){
 
+    if(!empty($_POST['setPlanningTitle']) && !empty($_POST['setPlanningDate']) && !empty($_POST['setPlanningSalle'])){
         $user = getUtilisateurByName($_SESSION["name"]);
         $checkPlanning = updatePlanning($_POST['setPlanningTitle'], $_POST['setPlanningHour'], $_POST['setPlanningDate'], $_POST['setPlanningSalle'], $user);
+
+    }
+    if(!empty($_POST['deleteDate']) && !empty($_POST['deleteSalle'])){
+        deltePlanningAdmin($_POST['deleteDate'], $_POST['deleteHeure'], $_POST['deleteSalle']);
     }
 
     if(isset($_POST['dateSearchPlan']) && isset($_POST['changeSfdalleVal'])) {
         $salleSecleted = $_POST['changeSfdalleVal'];
         $dateSecleted = $_POST['dateSearchPlan'];
     }
-    
+
     $firstMondayThisWeek= new DateTime($dateSecleted);
     $firstMondayThisWeek->modify('tomorrow');
     $firstMondayThisWeek->modify('last Monday');

@@ -14,14 +14,7 @@ if (isLoggedOnAsRole(2) || isLoggedOnAsRole(1) || isLoggedOnAsRole(0)) {
     $logicels = getLogiciel();
     $salles = getSalle();
     $nbPostesSalles = getPosteBySalle();
-
-    // $newSalles = [];
-    // foreach($salles as $kSalle => $salle){
-    //     $poste = getPosteSalle($salle->nSalle);
-    //     $newSalles[$salle->nSalle] = $poste; 
-    // }
-
-
+    
     include "$racine/vue/entete.html.php";
     include "$racine/vue/vueInfoPoste.php";
     include "$racine/vue/pied.html.php";

@@ -9,9 +9,7 @@ label{
     
 }
 
-input[type=text],input[type=password]{
-    width : 400px;
-}
+
 
 #commentaireForm{
     width : 100%;

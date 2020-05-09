@@ -1,5 +1,5 @@
 <div class="blcPlanning">
-    <h2>Planning réservation salles</h2>
+    <h2>Planning réservation des salles</h2>
 
     <div id="blcSuccess" class="alert alert-success" style="display: none">
             <strong>Horraire reserver !</strong>
@@ -31,7 +31,15 @@
             <input id="setPlanningHour" name="setPlanningHour" hidden/>
             <input id="setPlanningSalle" name="setPlanningSalle" hidden value="<?php if(!empty($salleSecleted)){ echo $salleSecleted; }?>"/>
 
-            <label class="titlePlanning">Choisir une date et une salle pour voir le planning de la semaine</label>
+            <?php if($_SESSION['level'] == 2){ ?>
+                <input id="deleteDate" name="deleteDate" hidden/>
+                <input id="deleteHeure" name="deleteHeure" hidden/>
+                <input id="deleteSalle" name="deleteSalle" hidden value="<?php if(!empty($salleSecleted)){ echo $salleSecleted; }?>"/>
+            <?php } ?>
+            
+            <label class="titlePlanning">Choisir une date et une salle pour voir le planning de la semaine du 
+                <strong><?= date("d-m-Y", strtotime($firstDayWeek))?> au <?=date("d-m-Y", strtotime($lastDayWeek))?> </strong>
+            </label>
             <input id="pickDateSearch" name="dateSearchPlan" type="date" value="<?= $dateSecleted ?>"/>
         </form>
     </div>
@@ -112,8 +120,8 @@
 
     $('.reservedSalle').click(function(e){
         if($(this).text().length < 1){
-            let hour = getHour($(this).attr('hour'));
 
+            let hour = getHour($(this).attr('hour'));
             let day  = $(this).parent('div').children('.titleDay').text();
             let date  = $(this).parent('div').children('.titleDay').attr('dateDay');
             let titlePlanning = prompt("Ecrire le titre de la reunion pour \nLe "+day+" de "+hour+"\n(le titre doit faire moins de 40 caractères)", "");
@@ -128,6 +136,16 @@
 
                 $('#formDateSearch').submit();
                 $('#blcSuccess').css('display', 'block')
+            }
+        }else{
+            if(<?=$_SESSION['level']?> == 2){
+                let rep = confirm("Voulez-vous supprimer cette horraire réservé");
+                if(rep){
+                    let date  = $(this).parent('div').children('.titleDay').attr('dateDay')
+                    $('#deleteDate').val(date)
+                    $('#deleteHeure').val($(this).attr('hour'))
+                    $('#formDateSearch').submit()
+                }
             }
         }
     });
@@ -149,46 +167,3 @@
     }
 
 </script>
-<style>
-.planningWeek
-{
-    width: 100%;
-    height: 600px;
-    display: flex;
-    justify-content: space-around;
-}
-.planningDay {
-    width: 193px;
-    height: 600px;
-    background-color: rgba(172, 194, 238, 0.4);
-    border-right: 2px solid;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.titleDay {
-    text-align: center;
-    font-size: 20px;
-    margin: 5px 0px 0px 0px;
-    border-bottom: 2px solid;
-}
-.hourInDay {
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 2px solid;
-    margin-bottom: 0px;
-    padding: 0px;
-    cursor: pointer;
-    height: 100%;
-}
-.titlePlanning{
-    font-weight: bold;
-}
-.headerPlanning{
-    margin-bottom: 15px;
-    display: flex;
-}
-.colorBlcHorraire{
-    background-color: #52f5b7;
-}
-</style>

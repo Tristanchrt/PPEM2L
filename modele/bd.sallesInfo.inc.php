@@ -325,11 +325,9 @@
     }
     function updatePlanning($titlePlannig, $hour, $date, $salle, $user) {
         $resultat = array();
-
         try {
-            
-            $checkPlan = checkPlanning($hour, $date);
-            var_dump($checkPlan);
+            $date = date("Y-m-d H:i:s", strtotime($date));
+            $checkPlan = checkPlanning($hour, $date, $salle);
             if(intval($checkPlan['checkPlan']) > 0){
                 return 1;
             }
@@ -343,27 +341,46 @@
             $req->bindValue(':userReserved', $user['id'], PDO::PARAM_INT);
             $req->bindValue(':title', $titlePlannig, PDO::PARAM_STR);
             $req->bindValue(':idSalle', $salle, PDO::PARAM_STR);
- 
             $req->execute();
             $resultat = $req;
 
-        } catch (PDOException $e) {
+        } catch (\Exception $e) {
             print "Erreur !: " . $e->getMessage();
             die();
         }
         return $resultat;
     }
-    function checkPlanning($hour, $datee) {
+    function checkPlanning($hour, $datee, $salle) {
         $ligne = array();
 
         try {
             $cnx = connexionPDO();
-            $req = $cnx->prepare("SELECT COUNT(*) as checkPlan FROM `planningreserved` WHERE heureid = :hour AND dateSelected = :datee ");
+            $req = $cnx->prepare("SELECT COUNT(*) as checkPlan FROM planningreserved WHERE heureid = :hour AND dateSelected = :datee AND idSalle = :salle ");
             $req->bindValue(':hour', $hour, PDO::PARAM_STR);
             $req->bindValue(':datee', $datee, PDO::PARAM_STR);
+            $req->bindValue(':salle', $salle, PDO::PARAM_STR);
             $req->execute();
-
+            
             $ligne = $req->fetch(PDO::FETCH_ASSOC);
+          
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $ligne;
+    }
+    function deltePlanningAdmin($dates, $houre, $salle) {
+        $ligne = array();
+
+        try {
+            $cnx = connexionPDO();
+            $req = $cnx->prepare("DELETE FROM `planningreserved` WHERE dateSelected = :dates AND heureid = :houre AND idSalle = :salle");
+            $req->bindValue(':dates', $dates, PDO::PARAM_STR);
+            $req->bindValue(':houre', $houre, PDO::PARAM_STR);
+            $req->bindValue(':salle', $salle, PDO::PARAM_STR);
+            $req->execute();
+            $req->execute();
+            $resultat = $req;
 
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();

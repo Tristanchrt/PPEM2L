@@ -5,9 +5,9 @@
     </div>
     <br>
     <canvas id="infoLogInPoste"></canvas><br><br><br>
-    <h3 style="background-color: #CFEDEE">Nombre de logiciels installer sur les postes :</h3><br>
+        <h3 style="background-color: #CFEDEE">Nombre de logiciels installés sur les postes :</h3><br>
     <canvas id="infoLogInPosteNb"></canvas><br><br><br>
-    <h3 style="background-color: #CFEDEE">Nombre de postes par salles :</h3><br>
+        <h3 style="background-color: #CFEDEE">Nombre de postes par salles :</h3><br>
     <canvas id="nbPosteBySalle"></canvas><br><br><br>
 </div>
 
@@ -46,9 +46,10 @@ var myChart = new Chart(ctx, {
         lblLogInstallNb.push(<?= $poste->nbLog ?>);
         randomColor2.push(getRandomColor());
     <?php } ?>
-
+        console.log(lblLogInstallNb);
+        console.log(lblLogNb);
     var myChart2 = new Chart(ctx2, {
-    type: 'polarArea',
+    type: 'doughnut',
     data: {
         labels: lblLogNb,
         datasets: [{

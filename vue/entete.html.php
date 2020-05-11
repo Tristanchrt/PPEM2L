@@ -41,10 +41,13 @@
                   <li class="col-lg-2"><a href="./?action=gestionLogiciel">Gestion des logicels</a></li>
                   <li class="col-lg-2"><a href="./?action=infoPoste">Informations postes</a></li>
                   <li class="col-lg-2"><a href="./?action=planning">Reservation salle</a></li>
-                <?php } if($level == 1){ ?>
+                <?php }else if($level == 1){ ?>
                   <li class="col-lg-2"><a href="./?action=modifierPoste">Modifier Salle</a></li>
                   <li class="col-lg-2"><a href="./?action=infoPoste">Informations postes</a></li>
                   <li class="col-lg-2"><a href="./?action=planning">Reservation salle</a></li>
+              <?php }else{ ?>
+                <li class="col-lg-2"><a href="./?action=infoPoste">Informations postes</a></li>
+                <li class="col-lg-2"><a href="./?action=planning">Reservation salle</a></li>
               <?php }
             }?>
           </ul>
